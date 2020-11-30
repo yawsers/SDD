@@ -1,0 +1,15 @@
+Upon login, store login in localStorage (Perhaps use some hash for security)
+	https://zellwk.com/blog/frontend-login-system/
+
+Once logged in, show list of classes
+	+ create class if instructor
+	+ join class if student (Separate pages like student_dashboard.html or instructor_dashboard.html)
+
+	Fill information based on the token stored in localStorage
+
+
+Once user clicks on class, add to storage again with currently selected class
+	Fill instructor_class.html or student_class.html page with related info
+	based on storage?
+
+	Includes lecture times / Prerecorded videos maybe
