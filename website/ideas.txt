@@ -11,5 +11,6 @@ Once logged in, show list of classes
 Once user clicks on class, add to storage again with currently selected class
 	Fill instructor_class.html or student_class.html page with related info
 	based on storage?
+		Or use query parameters (?class=csci4200) etc.
 
 	Includes lecture times / Prerecorded videos maybe
