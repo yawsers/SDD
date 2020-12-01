@@ -52,11 +52,11 @@ class DatabaseManager():
 			print(e)
 			self.db.rollback()
 			return False
-	def verify_user_login(self,usid, passwordhash):
+	def verify_user_login(self,email, passwordhash):
 		'''
 		returns true if the user and passwordhash are in the database
 		'''
-		rows = self.cur.execute("SELECT 1 FROM users WHERE userid = {} and passwordhash = '{}'".format(usid, passwordhash))
+		rows = self.cur.execute("SELECT 1 FROM users WHERE email= '{}' and passwordhash = '{}'".format(email, passwordhash))
 		return len(self.cur.fetchall()) == 1
 	def isStudent(self,usid):
 		rows = self.cur.execute("SELECT 1 FROM users WHERE userid = {} and isstudent = {}".format(usid, True))
@@ -138,6 +138,20 @@ class DatabaseManager():
 		except Exception as e:
 			print(e)
 			return False
+	def reset_database(self):
+		'''
+		Empties all the tables in the database
+		'''
+		schema = '\n'.join(open('data.sql', 'r').readlines())
+		try:
+			self.cur.execute(schema)
+			self.db.commit()
+			return True
+		except Exception as e:
+			print(e)
+			self.db.rollback()
+			return False
+
 
 if __name__ == "__main__":
 	db = DatabaseManager()

@@ -80,12 +80,12 @@ def save_class():
 @app.route('/verify_user_login', methods = ["POST"])
 def verify_user_login():
     '''
-    returns true if the user and passwordhash are in the database false otherwise
+    returns true if the username and passwordhash match the database false otherwise
     '''
     data = json.loads(json.dumps(request.get_json()))
-    usid = data["userid"]
+    email = data["email"]
     password = data["password"]
-    status = db.verify_user_login(usid, password)
+    status = db.verify_user_login(email, password)
     return jsonify({"status":status})
 
 @app.route('/add_lecture', methods = ["POST"])    
@@ -122,6 +122,14 @@ def get_all_classes(self, studentid):
     result = db.get_all_classes(studentid)
     return jsonify({"result": result})
 
+
+@app.route('/reset_database', methods = ['GET'])
+def reset_database(self):
+    '''
+    resets all the tables in the database (DEV/ADMIN FUNCTION)
+    '''
+    db.resest_database()
+    return 'DONE', 201
 
 
 '''
