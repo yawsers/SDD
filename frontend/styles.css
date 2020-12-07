@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Open+Sans&display=swap');
+
+:root {
+/* general vars */
+	--font-size: 1rem;
+	--line-height: 1.4;
+	--font-color: #000;
+	--bg: #eee;
+	--border-color: #ddd;
+	--btn-pad-tb: calc((var(--wordmark-size) * var(--wordmark-height)
+		- var(--font-size) * var(--line-height)) / 2);
+	--btn-pad-rl: calc(var(--btn-pad-tb) * 1.5);
+	--button-padding: var(--btn-pad-tb) var(--btn-pad-rl);
+	--border-radius: var(--font-size);
+	--margin: var(--hdr-pad-tb);
+	--link-color: #66cdaa;
+	--link-darken: #55ab8e;
+	--title-size: 1.4rem;
+/* accent colors */
+	--card-accent-1: #ff6347;
+	--card-accent-1-darken: #d5533b;
+	--card-accent-2: #6495ed;
+	--card-accent-2-darken: #537cc6;
+	--nav-accent: #9370db;
+	--nav-darken: #7b5db7;
+/* header vars */
+	--wordmark-size: 2rem;
+	--wordmark-height: 1.25;
+	--wordmark-accent: #dc143c;
+	--hdr-pad-tb: var(--btn-pad-rl);
+	--hdr-pad-rl: calc(var(--hdr-pad-tb) * 1.5);
+	--header-padding: var(--hdr-pad-tb) var(--hdr-pad-rl);
+}
+
+* {
+	box-sizing: border-box;
+	max-width: 100%;
+	transition: all 0.2s linear;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	font-size: var(--font-size);
+	line-height: var(--line-height);
+	color: var(--font-color);
+	font-family: 'Open Sans', sans-serif;
+}
+
+::selection {
+	background: var(--font-color);
+	color: #fff;
+}
+
+a {
+	color: var(--link-darken);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+header, footer {
+	background: #fff;
+	padding: var(--header-padding);
+}
+
+header {
+	border-bottom: 1px solid var(--border-color);
+	font-weight: bold;
+	margin-bottom: var(--margin);
+}
+
+header a:hover {
+	text-decoration: none;
+}
+
+footer {
+	border-top: 1px solid var(--border-color);
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	margin-top: var(--margin);
+}
+
+footer > * {
+	padding: 0 var(--btn-pad-rl);
+}
+
+footer > *:not(:first-child) {
+	border-left: 1px solid var(--border-color);
+}
+
+main {
+	width: 70%;
+	margin: 0 auto;
+}
+
+#wrapper {
+	min-height: 100vh;
+	position: relative;
+}
+
+#wordmark {
+	color: #000;
+	font-size: var(--wordmark-size);
+	line-height: var(--wordmark-height);
+	text-shadow: 2px 1px 0 var(--wordmark-accent);
+	font-family: 'Nunito', sans-serif;
+	letter-spacing: 1px;
+}
+
+#site-nav {
+	float: right;
+}
+
+#site-nav a {
+	background: var(--link-color);
+}
+
+#site-nav a:hover {
+	background: var(--link-darken);
+}
+
+#site-nav, .links a:not(:first-child) {
+	margin-left: var(--btn-pad-rl);
+}
+
+#class-nav {
+	font-weight: bold;
+	width: fit-content;
+	margin: var(--margin) auto;
+}
+
+#class-nav a {
+	background: var(--nav-accent);
+}
+
+#class-nav a:hover {
+	background: var(--nav-darken);
+}
+
+.links a {
+	border-radius: var(--border-radius);
+	color: #fff;
+	display: inline-block;
+	padding: var(--button-padding);
+}
+
+.links a:hover {
+	text-decoration: none;
+}
+
+#classes a {
+	width: calc((100% - var(--margin) * 2) / 3);
+	position: relative;
+	height: calc(var(--btn-pad-tb) * 2 + (var(--title-size) * 3
+		+ var(--font-size)) * var(--line-height));
+}
+
+#classes a div:first-child {
+	font-weight: bold;
+	font-size: var(--title-size);
+}
+
+#classes a div:last-child {
+	position: absolute;
+	bottom: var(--btn-pad-tb);
+}
+
+#classes a:nth-child(2n + 1) {
+	background: var(--card-accent-1);
+}
+
+#classes a:nth-child(2n + 1):hover {
+	background: var(--card-accent-1-darken);
+}
+
+#classes a:nth-child(2n) {
+	background: var(--card-accent-2);
+}
+
+#classes a:nth-child(2n):hover {
+	background: var(--card-accent-2-darken);
+}
+
+#classes a:nth-child(3n + 1) {
+	margin-left: 0;
+}
+
+#classes a:nth-child(n + 4) {
+	margin-top: var(--margin);
+}
