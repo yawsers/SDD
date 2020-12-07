@@ -107,9 +107,7 @@ main {
 	color: #000;
 	font-size: var(--wordmark-size);
 	line-height: var(--wordmark-height);
-	text-shadow: 2px 1px 0 var(--wordmark-accent);
 	font-family: 'Nunito', sans-serif;
-	letter-spacing: 1px;
 }
 
 #site-nav {
@@ -163,6 +161,7 @@ main {
 #classes a div:first-child {
 	font-weight: bold;
 	font-size: var(--title-size);
+	font-family: 'Nunito', sans-serif;
 }
 
 #classes a div:last-child {
