@@ -26,7 +26,6 @@
 /* header vars */
 	--wordmark-size: 2rem;
 	--wordmark-height: 1.25;
-	--wordmark-accent: #dc143c;
 	--hdr-pad-tb: var(--btn-pad-rl);
 	--hdr-pad-rl: calc(var(--hdr-pad-tb) * 1.5);
 	--header-padding: var(--hdr-pad-tb) var(--hdr-pad-rl);
@@ -68,7 +67,6 @@ header, footer {
 
 header {
 	border-bottom: 1px solid var(--border-color);
-	font-weight: bold;
 	margin-bottom: var(--margin);
 }
 
@@ -87,10 +85,19 @@ footer {
 
 footer > * {
 	padding: 0 var(--btn-pad-rl);
+	display: inline-block;
 }
 
 footer > *:not(:first-child) {
 	border-left: 1px solid var(--border-color);
+}
+
+footer > *:first-child {
+	padding-left: 0;
+}
+
+footer > *:last-child {
+	padding-right: 0;
 }
 
 main {
@@ -108,35 +115,36 @@ main {
 	font-size: var(--wordmark-size);
 	line-height: var(--wordmark-height);
 	font-family: 'Nunito', sans-serif;
+	font-weight: bold;
+	display: inline-block;
 }
 
-#site-nav {
+#primary-nav {
 	float: right;
 }
 
-#site-nav a {
+#primary-nav a {
 	background: var(--link-color);
 }
 
-#site-nav a:hover {
+#primary-nav a:hover {
 	background: var(--link-darken);
 }
 
-#site-nav, .links a:not(:first-child) {
+#primary-nav, .links a:not(:first-child) {
 	margin-left: var(--btn-pad-rl);
 }
 
-#class-nav {
-	font-weight: bold;
+#secondary-nav {
 	width: fit-content;
 	margin: var(--margin) auto;
 }
 
-#class-nav a {
+#secondary-nav a {
 	background: var(--nav-accent);
 }
 
-#class-nav a:hover {
+#secondary-nav a:hover {
 	background: var(--nav-darken);
 }
 
@@ -145,6 +153,7 @@ main {
 	color: #fff;
 	display: inline-block;
 	padding: var(--button-padding);
+	font-weight: bold;
 }
 
 .links a:hover {
@@ -156,15 +165,15 @@ main {
 	position: relative;
 	height: calc(var(--btn-pad-tb) * 2 + (var(--title-size) * 3
 		+ var(--font-size)) * var(--line-height));
+	vertical-align: top;
 }
 
-#classes a div:first-child {
-	font-weight: bold;
+#classes a .title {
 	font-size: var(--title-size);
 	font-family: 'Nunito', sans-serif;
 }
 
-#classes a div:last-child {
+#classes a .instructor {
 	position: absolute;
 	bottom: var(--btn-pad-tb);
 }
