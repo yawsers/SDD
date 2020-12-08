@@ -51,3 +51,39 @@ function loadClasses() {
 		}
 	}
 }
+
+
+// onload for class page
+// TODO: Finish implementation with calls to database
+// If the user is logged in and in a valid class, load the respective lectures / other info
+// If not logged in, redirect to login page
+function loadClass() {
+	if (!isLoggedIn()) {
+		window.location.replace('login.html');
+	}
+
+	if (localStorage.isstudent == "true") {
+		document.getElementById('add-prerecorded').style.display = "none";
+		document.getElementById('start-live').style.display = "none";
+	}
+	else {
+		document.getElementById('join-live').style.display = "none";
+	}
+
+	// Get query params to find class
+	const urlParams = new URLSearchParams(window.location.search);
+
+	// Currently hardcoded for demo purposes
+	if (urlParams.get('id') == '1') {
+        	document.getElementById("class-title").innerHTML = "Class 1";
+		document.getElementById("lectures").innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/FdqOpFVp25M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+
+	}
+
+	if (urlParams.get('id') == '2') {
+        	document.getElementById("class-title").innerHTML = "Class 2";
+		document.getElementById("lectures").innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/ynig2wrF_as" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+
+	}
+
+}
