@@ -17,6 +17,7 @@ function loginStudent() {
 		// Login successful, redirect to classes page
 		if (response.status) {
                 	localStorage.setItem('token', response.usid)
+			localStorage.setItem('isstudent', response.isstudent)
 			window.location.replace('classes.html');
 		}
 		else {

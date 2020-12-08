@@ -18,6 +18,7 @@ function registerStudent() {
 		// Account creation successful, continue
 		if (response.status) {
                 	localStorage.setItem('token', response.usid)
+                	localStorage.setItem('isstudent', true)
 			window.location.replace('classes.html');
 		}
 		else {
@@ -44,6 +45,7 @@ function registerInstructor() {
 		// Account creation successful, continue
 		if (response.status) {
                 	localStorage.setItem('token', response.usid)
+                	localStorage.setItem('isstudent', false)
 			window.location.replace('classes.html');
 		}
 		else {
