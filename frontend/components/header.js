@@ -7,8 +7,7 @@ class Header extends HTMLElement {
 		id="wordmark">Profess.it</a><div id="primary-nav" class="links">`;
 		if (localStorage.getItem('token'))
 			header += `<a href="classes.html">My classes</a><a
-			href="#">Account settings</a><a href="#"
-			onmouseup="signOut()">Sign out</a>`;
+			href="#">Account settings</a><a onmouseup="signOut()">Sign out</a>`;
 		else
 			header += `<a href="login.html">Sign in</a><a
 			href="register.html">Create an account</a>`;

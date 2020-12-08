@@ -5,11 +5,11 @@ function isLoggedIn() {
 	return localStorage.token != null;
 }
 
-// onload for login page and register page
-// If the user is already logged in, redirect to the home page (index.html)
+// onload for login page, register page, landing page
+// If the user is already logged in, redirect to the classes page (classes.html)
 function loadLogin() {
 	if (isLoggedIn()) {
-        	window.location.replace('index.html');
+        	window.location.replace('classes.html');
 	}
 }
 

@@ -8,8 +8,8 @@ class Nav extends HTMLElement {
 		loc = loc[loc.length - 1].split(".")[0];
 		if (loc == "classes") {
 			if (localStorage.getItem('isstudent') == "true")
-				nav += `<a href="join.html">Join a class</a>`;
-			else nav += `<a href="create.html">Create a class</a>`;
+				nav += `<a href="#">Join a class</a>`;
+			else nav += `<a href="#">Create a class</a>`;
 		} else if (loc == "class") {
 			// update these w specific urls based on class
 			nav += `<a href="class.html">Lectures</a><a href="#">Resources</a>`;

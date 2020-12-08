@@ -7,10 +7,12 @@
 	--font-color: #000;
 	--bg: #eee;
 	--border-color: #ddd;
+	--border-darken: #b8b8b8;
 	--btn-pad-tb: calc((var(--wordmark-size) * var(--wordmark-height)
 		- var(--font-size) * var(--line-height)) / 2);
 	--btn-pad-rl: calc(var(--btn-pad-tb) * 1.5);
 	--button-padding: var(--btn-pad-tb) var(--btn-pad-rl);
+	--input-padding: calc(var(--btn-pad-tb) - 1px) calc(var(--btn-pad-rl) - 1px);
 	--border-radius: var(--font-size);
 	--margin: var(--hdr-pad-tb);
 	--link-color: #66cdaa;
@@ -29,6 +31,8 @@
 	--hdr-pad-tb: var(--btn-pad-rl);
 	--hdr-pad-rl: calc(var(--hdr-pad-tb) * 1.5);
 	--header-padding: var(--hdr-pad-tb) var(--hdr-pad-rl);
+	--header-height: calc(var(--wordmark-size) * var(--wordmark-height)
+		+ var(--hdr-pad-tb) * 2);
 }
 
 * {
@@ -40,9 +44,12 @@
 body {
 	margin: 0;
 	background: var(--bg);
+	color: var(--font-color);
+}
+
+body, input, button {
 	font-size: var(--font-size);
 	line-height: var(--line-height);
-	color: var(--font-color);
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -67,7 +74,6 @@ header, footer {
 
 header {
 	border-bottom: 1px solid var(--border-color);
-	margin-bottom: var(--margin);
 }
 
 header a:hover {
@@ -123,11 +129,11 @@ main {
 	float: right;
 }
 
-#primary-nav a {
+#primary-nav a, .form-page button {
 	background: var(--link-color);
 }
 
-#primary-nav a:hover {
+#primary-nav a:hover, .form-page button:hover {
 	background: var(--link-darken);
 }
 
@@ -148,12 +154,13 @@ main {
 	background: var(--nav-darken);
 }
 
-.links a {
+.links a, .form-page button {
 	border-radius: var(--border-radius);
 	color: #fff;
 	display: inline-block;
 	padding: var(--button-padding);
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .links a:hover {
@@ -200,4 +207,46 @@ main {
 
 #classes a:nth-child(n + 4) {
 	margin-top: var(--margin);
+}
+
+:focus {
+	outline: none;
+}
+
+input {
+	padding: var(--input-padding);
+	border-radius: var(--border-radius);
+	border: 1px solid var(--border-color);
+}
+
+input:focus {
+	border-color: var(--border-darken);
+}
+
+button {
+	border: none;
+}
+
+.form-page {
+	margin-top: var(--header-height);
+}
+
+.form-page * {
+	display: block !important;
+}
+
+.form-page > * {
+	width: 35%;
+}
+
+.form-page > * > * {
+	width: 100%;
+}
+
+.form-page > * > *, .form-page > * {
+	margin: var(--margin) auto;
+}
+
+.form-page a {
+	text-align: center;
 }

@@ -9,16 +9,17 @@
 		<script src="../scripts/login.js"></script>
 	</head>
 	<body onload="loadLogin()">
-  		<div>
-    			<h1>Login</h1>
-    
-    			<form id="login-form">
-				<input type="text" name="Email" placeholder="Email">
-				<input type="password" name="Password" placeholder="Password">
-				<button type="button" onmouseup="login()">Login</button>
-			</form>
-
-			<a href="register.html">Create account?</a>
+		<div id="wrapper">
+			<header-component></header-component>
+			<main class="form-page">
+				<form id="login-form">
+					<input type="text" name="Email" placeholder="Email">
+					<input type="password" name="Password" placeholder="Password">
+					<button type="button" onmouseup="login()">Sign in</button>
+				</form>
+				<a href="register.html">Don't have an account?</a>
+			</main>
+			<footer-component></footer-component>
   		</div>
 	</body>
 </html>
