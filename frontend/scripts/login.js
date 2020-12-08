@@ -37,6 +37,9 @@ function loginInstructor() {
 	console.log(email, password, "instructor");
 
 	if (email == "User@rpi.edu" && password == "Password") {
-        	console.log("Successfully logged in")
+        	console.log("Successfully logged in");
 	}
 }
+
+
+console.log('hello');
