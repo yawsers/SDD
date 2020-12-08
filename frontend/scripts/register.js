@@ -3,7 +3,7 @@ const accountForm = document.getElementById("account-form")
 // Called when user clicks "Create Student Account" button on account creation
 // page.  If successful, adds new student to database and redirects to main
 // student page
-function createStudentAccount() {
+function registerStudent() {
 	const name = accountForm.Fullname.value.toLowerCase();
 	const email = accountForm.Email.value.toLowerCase();
 	const password = accountForm.Password.value;
@@ -29,7 +29,7 @@ function createStudentAccount() {
 // Called when user clicks "Create Instructor Account" button on account
 // creation page.  If successful, adds new instructor to database and redirects to
 // main instructor page
-function createInstructorAccount() {
+function registerInstructor() {
 	const name = accountForm.Fullname.value.toLowerCase();
 	const email = accountForm.Email.value.toLowerCase();
 	const password = accountForm.Password.value;
