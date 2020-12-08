@@ -40,6 +40,3 @@ function loginInstructor() {
         	console.log("Successfully logged in");
 	}
 }
-
-
-console.log('hello');
