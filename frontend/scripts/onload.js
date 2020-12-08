@@ -66,7 +66,7 @@ function loadClass() {
 	// Currently hardcoded for demo purposes
 	if (urlParams.get('id') == '1') {
         	document.getElementById("class-title").innerHTML = "Class 1";
-		document.getElementById("lectures").innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/FdqOpFVp25M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+		document.getElementById("lectures").innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/NbCcFcJ4PpE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
 
 	}
 
