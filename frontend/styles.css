@@ -7,10 +7,12 @@
 	--font-color: #000;
 	--bg: #eee;
 	--border-color: #ddd;
+	--border-darken: #b8b8b8;
 	--btn-pad-tb: calc((var(--wordmark-size) * var(--wordmark-height)
 		- var(--font-size) * var(--line-height)) / 2);
 	--btn-pad-rl: calc(var(--btn-pad-tb) * 1.5);
 	--button-padding: var(--btn-pad-tb) var(--btn-pad-rl);
+	--input-padding: calc(var(--btn-pad-tb) - 1px) calc(var(--btn-pad-rl) - 1px);
 	--border-radius: var(--font-size);
 	--margin: var(--hdr-pad-tb);
 	--link-color: #66cdaa;
@@ -26,10 +28,11 @@
 /* header vars */
 	--wordmark-size: 2rem;
 	--wordmark-height: 1.25;
-	--wordmark-accent: #dc143c;
 	--hdr-pad-tb: var(--btn-pad-rl);
 	--hdr-pad-rl: calc(var(--hdr-pad-tb) * 1.5);
 	--header-padding: var(--hdr-pad-tb) var(--hdr-pad-rl);
+	--header-height: calc(var(--wordmark-size) * var(--wordmark-height)
+		+ var(--hdr-pad-tb) * 2);
 }
 
 * {
@@ -41,9 +44,12 @@
 body {
 	margin: 0;
 	background: var(--bg);
+	color: var(--font-color);
+}
+
+body, input, button {
 	font-size: var(--font-size);
 	line-height: var(--line-height);
-	color: var(--font-color);
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -68,8 +74,6 @@ header, footer {
 
 header {
 	border-bottom: 1px solid var(--border-color);
-	font-weight: bold;
-	margin-bottom: var(--margin);
 }
 
 header a:hover {
@@ -87,10 +91,19 @@ footer {
 
 footer > * {
 	padding: 0 var(--btn-pad-rl);
+	display: inline-block;
 }
 
 footer > *:not(:first-child) {
 	border-left: 1px solid var(--border-color);
+}
+
+footer > *:first-child {
+	padding-left: 0;
+}
+
+footer > *:last-child {
+	padding-right: 0;
 }
 
 main {
@@ -108,43 +121,46 @@ main {
 	font-size: var(--wordmark-size);
 	line-height: var(--wordmark-height);
 	font-family: 'Nunito', sans-serif;
+	font-weight: bold;
+	display: inline-block;
 }
 
-#site-nav {
+#primary-nav {
 	float: right;
 }
 
-#site-nav a {
+#primary-nav a, .form-page button {
 	background: var(--link-color);
 }
 
-#site-nav a:hover {
+#primary-nav a:hover, .form-page button:hover {
 	background: var(--link-darken);
 }
 
-#site-nav, .links a:not(:first-child) {
+#primary-nav, .links a:not(:first-child) {
 	margin-left: var(--btn-pad-rl);
 }
 
-#class-nav {
-	font-weight: bold;
+#secondary-nav {
 	width: fit-content;
 	margin: var(--margin) auto;
 }
 
-#class-nav a {
+#secondary-nav a {
 	background: var(--nav-accent);
 }
 
-#class-nav a:hover {
+#secondary-nav a:hover {
 	background: var(--nav-darken);
 }
 
-.links a {
+.links a, .form-page button {
 	border-radius: var(--border-radius);
 	color: #fff;
 	display: inline-block;
 	padding: var(--button-padding);
+	font-weight: bold;
+	cursor: pointer;
 }
 
 .links a:hover {
@@ -156,15 +172,15 @@ main {
 	position: relative;
 	height: calc(var(--btn-pad-tb) * 2 + (var(--title-size) * 3
 		+ var(--font-size)) * var(--line-height));
+	vertical-align: top;
 }
 
-#classes a div:first-child {
-	font-weight: bold;
+#classes a .title {
 	font-size: var(--title-size);
 	font-family: 'Nunito', sans-serif;
 }
 
-#classes a div:last-child {
+#classes a .instructor {
 	position: absolute;
 	bottom: var(--btn-pad-tb);
 }
@@ -191,4 +207,46 @@ main {
 
 #classes a:nth-child(n + 4) {
 	margin-top: var(--margin);
+}
+
+:focus {
+	outline: none;
+}
+
+input {
+	padding: var(--input-padding);
+	border-radius: var(--border-radius);
+	border: 1px solid var(--border-color);
+}
+
+input:focus {
+	border-color: var(--border-darken);
+}
+
+button {
+	border: none;
+}
+
+.form-page {
+	margin-top: var(--header-height);
+}
+
+.form-page * {
+	display: block !important;
+}
+
+.form-page > * {
+	width: 35%;
+}
+
+.form-page > * > * {
+	width: 100%;
+}
+
+.form-page > * > *, .form-page > * {
+	margin: var(--margin) auto;
+}
+
+.form-page a {
+	width: fit-content;
 }
