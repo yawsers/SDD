@@ -28,24 +28,24 @@ function loadClasses() {
 		http.open("POST", "https://professit-backend.herokuapp.com/get_all_classes")
 		http.setRequestHeader("Content-Type", "application/json");
 		http.send(JSON.stringify({"studentid": localStorage.token}));
-		document.getElementById('create-class').style.display = "none"
+		document.getElementById('create-class').remove();
 	}
 	// Load instructor classes
 	else {
 		http.open("POST", "https://professit-backend.herokuapp.com/get_all_teaching")
 		http.setRequestHeader("Content-Type", "application/json");
 		http.send(JSON.stringify({"instructorid": localStorage.token}));
-		document.getElementById('join-class').style.display = "none"
+		document.getElementById('join-class').remove();
 	}
 	// Fill page with classes
 	http.onload = function() {
         	const response = JSON.parse(http.responseText);
 		const classdiv = document.getElementById("classes");
 		for (var i = 0; i < response.result.length; i++) {
-			classdiv.innerHTML += "<a href=class.html?id=" +
-				response.result[i].classid + "> <div>" +
+			classdiv.innerHTML += "<a href=\"class.html?id=" +
+				response.result[i].classid + "\"> <div class=\"title\">" +
 				response.result[i].classname + "</div>" +
-				(response.result[i].instructor ? "<div>" +
+				(response.result[i].instructor ? "<div class=\"instructor\">" +
 				response.result[i].instructor + "</div>" : "") +
 				"</a>"
 		}
