@@ -14,9 +14,9 @@ class Nav extends HTMLElement {
 			// update these w specific urls based on class
 			nav += `<a href="class.html">Lectures</a><a href="#">Resources</a>`;
 			if (localStorage.getItem('isstudent') == "true")
-				nav += `<a href="#">Join the lecture</a><a href="#">Leave this class</a>`;
+				nav += `<a href="#" onmouseup="redirectLecture()">Join the lecture</a><a href="#">Leave this class</a>`;
 			else {
-				nav += `<a href="#">Start a lecture</a><a href="#">Class settings</a>`;
+				nav += `<a href="#" onmouseup="redirectLecture()">Start a lecture</a><a href="#">Class settings</a>`;
 			}
 		}
 		nav += "</div>";
@@ -25,3 +25,7 @@ class Nav extends HTMLElement {
 }
 
 customElements.define('secondary-nav', Nav);
+
+function redirectLecture() {
+	window.location.replace("localhost:8000");
+}
