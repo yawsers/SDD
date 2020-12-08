@@ -5,8 +5,9 @@
 		<link rel="stylesheet" href="../styles.css" />
 		<script src="../components/header.js"></script>
 		<script src="../components/footer.js"></script>
+		<script src="../scripts/onload.js"></script>
 	</head>
-	<body>
+	<body onload="loadClasses()">
 		<div id="wrapper">
 			<header>
 				<a href="index.html" id="wordmark">Profess.it</a>
@@ -19,29 +20,10 @@
 			</header>
 			<main>
 				<div id="class-nav" class="links">
-					<a href="#">Create a class</a><a
-					href="#">Join a class</a>
+					<a href="#" id="create-class">Create a class</a>
+					<a href="#" id="join-class">Join a class</a>
 				</div>
 				<div id="classes" class="links">
-					<a href="#">
-						<div>Class 1000</div>
-						<div>Professor A</div>
-					</a><a href="#">
-						<div>Class 1000</div>
-						<div>Professor A</div>
-					</a><a href="#">
-						<div>Class 1000</div>
-						<div>Professor A</div>
-					</a><a href="#">
-						<div>Class 1000</div>
-						<div>Professor A</div>
-					</a><a href="#">
-						<div>Class 1000</div>
-						<div>Professor A</div>
-					</a><a href="#">
-						<div>Class 1000</div>
-						<div>Professor A</div>
-					</a>
 				</div>
 			</main>
 			<footer>
