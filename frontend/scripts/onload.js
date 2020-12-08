@@ -28,14 +28,12 @@ function loadClasses() {
 		http.open("POST", "https://professit-backend.herokuapp.com/get_all_classes")
 		http.setRequestHeader("Content-Type", "application/json");
 		http.send(JSON.stringify({"studentid": localStorage.token}));
-		document.getElementById('create-class').remove();
 	}
 	// Load instructor classes
 	else {
 		http.open("POST", "https://professit-backend.herokuapp.com/get_all_teaching")
 		http.setRequestHeader("Content-Type", "application/json");
 		http.send(JSON.stringify({"instructorid": localStorage.token}));
-		document.getElementById('join-class').remove();
 	}
 	// Fill page with classes
 	http.onload = function() {
@@ -60,14 +58,6 @@ function loadClasses() {
 function loadClass() {
 	if (!isLoggedIn()) {
 		window.location.replace('login.html');
-	}
-
-	if (localStorage.isstudent == "true") {
-		document.getElementById('add-prerecorded').style.display = "none";
-		document.getElementById('start-live').style.display = "none";
-	}
-	else {
-		document.getElementById('join-live').style.display = "none";
 	}
 
 	// Get query params to find class

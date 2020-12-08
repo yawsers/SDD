@@ -5,17 +5,14 @@
 		<link rel="stylesheet" href="../styles.css" />
 		<script src="../components/header.js"></script>
 		<script src="../components/footer.js"></script>
+		<script src="../components/nav.js"></script>
 		<script src="../scripts/onload.js"></script>
 	</head>
 	<body onload="loadClass()">
 		<div id="wrapper">
 			<header-component></header-component>
 			<main>
-				<div id="secondary-nav" class="links">
-					<a href="#" id="add-prerecorded">Add a prerecorded lecture</a>
-					<a href="#" id="start-live">Start a live lecture</a>
-					<a href="#" id="join-live">Join a live lecture</a>
-				</div>
+				<secondary-nav></secondary-nav>
 				<div id="class-title">
 				</div>
 				<div id="lectures">

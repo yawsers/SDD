@@ -5,16 +5,14 @@
 		<link rel="stylesheet" href="../styles.css" />
 		<script src="../components/header.js"></script>
 		<script src="../components/footer.js"></script>
+		<script src="../components/nav.js"></script>
 		<script src="../scripts/onload.js"></script>
 	</head>
 	<body onload="loadClasses()">
 		<div id="wrapper">
 			<header-component></header-component>
 			<main>
-				<div id="secondary-nav" class="links">
-					<a href="#" id="create-class">Create a class</a>
-					<a href="#" id="join-class">Join a class</a>
-				</div>
+				<secondary-nav></secondary-nav>
 				<div id="classes" class="links">
 				</div>
 			</main>
