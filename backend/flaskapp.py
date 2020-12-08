@@ -42,18 +42,20 @@ def add_user():
     '''
     Adds a new student to the database, used for sign up
     Input {"name": name, "email": email, "password": password , "isstudent": true/false}
-    Output {"status": true/false, "usid": userid}        status is true if the user could be signed up
+    Output {"status": true/false, "usid": userid, "isstudent": true/false}        status is true if the user could be signed up
     '''
     data = json.loads(json.dumps(request.get_json()))
     name = data["name"]
     email = data["email"]
     password = data["password"]
     isstudent = bool(data["isstudent"])
-    usid = db.generate_new_usid()
-
+    usid = int(db.generate_new_usid())
+    
+    print(isstudent)
+    print('student am I?')
     #add hash password function around here
     status = db.add_user(usid, name, email, password, isstudent)
-    return jsonify({"status":status, "usid":usid})
+    return jsonify({"status":status, "usid":usid, "isstudent": isstudent})
 
 @app.route('/add_student', methods = ["POST"])
 def add_student():
@@ -64,7 +66,7 @@ def add_student():
     '''
     data = json.loads(json.dumps(request.get_json()))
     email = data["email"]
-    classid = data["classid"]
+    classid = int(data["classid"])
     status = db.add_student(email,classid)
     return jsonify({"status":status})
     
@@ -79,7 +81,7 @@ def save_class():
     data = json.loads(json.dumps(request.get_json()))
     classname = data["classname"]
     instructorid = int(data["instructorid"])
-    classid = db.generate_new_classid()
+    classid = int(db.generate_new_classid())
     status = db.save_class(classid, classname, instructorid)
     return jsonify({"status":status, "classid": classid})
 
@@ -88,14 +90,14 @@ def verify_user_login():
     '''
     returns true if the username and passwordhash match the database false otherwise
     Input {"email": email, "password": password}
-    Output {"status": true/false, "usid": userid of logged in user}     
+    Output {"status": true/false, "usid": userid of logged in user, "isstudent": true/false}     
     status is true if login was sucessful usid is None/null if login was unsucessful
     '''
     data = json.loads(json.dumps(request.get_json()))
     email = data["email"]
     password = data["password"]
-    status,usid = db.verify_user_login(email, password)
-    return jsonify({"status":status, "usid":usid})
+    status,usid, isstudent = db.verify_user_login(email, password)
+    return jsonify({"status":status, "usid":usid, "isstudent": isstudent})
 
 @app.route('/add_lecture', methods = ["POST"])    
 def add_lecture():
@@ -109,13 +111,13 @@ def add_lecture():
     , "day" :'2001-10-05'}
     '''
     data = json.loads(json.dumps(request.get_json()))
-    instructorid = data["instructorid"]
-    classid = data["classid"]
+    instructorid = int(data["instructorid"])
+    classid = int(data["classid"])
     starttime = data["starttime"]
     endtime = data["endtime"]
     lectureurl = data["lectureurl"]
     day = data["day"]
-    lectureid = db.generate_new_lectureid(classid)
+    lectureid = int(db.generate_new_lectureid(classid))
     status = db.add_lecture(instructorid, lectureid, classid, starttime, endtime, lectureurl, day)
     return jsonify({"status":status, "lectureid": lectureid})
 
@@ -133,8 +135,8 @@ def get_all_lectures():
         }
     '''
     data = json.loads(json.dumps(request.get_json()))
-    usid = data["usid"]
-    classid = data["classid"]
+    usid = int(data["usid"])
+    classid = int(data["classid"])
     result = db.get_all_lectures(usid, classid)
     data = []
     for lecture in result:
@@ -156,7 +158,7 @@ def get_all_classes():
         }
     '''
     data = json.loads(json.dumps(request.get_json()))
-    studentid = data["studentid"]
+    studentid = int(data["studentid"])
     result = db.get_all_classes(studentid)
     data = []
     for c in result:
@@ -177,7 +179,7 @@ def get_all_teaching():
         }
     '''
     data = json.loads(json.dumps(request.get_json()))
-    instructorid = data["instructorid"]
+    instructorid = int(data["instructorid"])
     result = db.get_all_teaching(instructorid)
     data = []
     for c in result:
@@ -194,8 +196,8 @@ def get_lecture_url():
     Output: {"url": url} url will be False if no url matching these parameters could be found
     '''
     data = json.loads(json.dumps(request.get_json()))
-    lectureid = data['lectureid']
-    classid = data['classid']
+    lectureid = int(data['lectureid'])
+    classid = int(data['classid'])
     url = db.get_lecture_url(lectureid,classid)
     return jsonify({"url": url})
 
