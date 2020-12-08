@@ -20,12 +20,16 @@ class DatabaseManager():
 			print(e)
 			self.db.rollback()
 			return False
-	def add_student(self, usid, classid):
+	def add_student(self, email, classid):
 		'''
 		Adds a student to a class in the database
 		'''
 		#verify user is a student
 		try:
+			self.cur.execute("SELECT userid FROM users WHERE '{}' = email".format(email))
+			rows = self.cur.fetchall()
+			assert len(rows) == 1
+			usid = rows[0][0]
 			assert self.isStudent(usid)
 			self.cur.execute("INSERT INTO member VALUES({}, {})".format(usid, classid))
 			self.db.commit()
@@ -56,7 +60,12 @@ class DatabaseManager():
 		'''
 		returns true if the user and passwordhash are in the database
 		'''
-		rows = self.cur.execute("SELECT 1 FROM users WHERE email= '{}' and passwordhash = '{}'".format(email, passwordhash))
+		rows = self.cur.execute("SELECT userid FROM users WHERE email= '{}' and passwordhash = '{}'".format(email, passwordhash))
+		rows = self.cur.fetchall()
+		if len(rows) == 0:
+			return False, None
+		else:
+			return True, rows[0][0] 
 		return len(self.cur.fetchall()) == 1
 	def isStudent(self,usid):
 		rows = self.cur.execute("SELECT 1 FROM users WHERE userid = {} and isstudent = {}".format(usid, True))
@@ -91,7 +100,7 @@ class DatabaseManager():
 		'''
 		returns all the classes of a student
 		'''
-		self.cur.execute("SELECT c.classid, c.name FROM class c, member m WHERE m.studentid = {} and c.classid = m.classid".format(studentid))
+		self.cur.execute("SELECT c.classid, c.name, u.name FROM class c, member m, teaches t, users u WHERE m.studentid = {} and c.classid = m.classid and t.classid = c.classid and t.instructorid = u.userid".format(studentid))
 		return self.cur.fetchall()
 	def get_all_teaching(self, instructorid):
 		'''
@@ -138,6 +147,16 @@ class DatabaseManager():
 		except Exception as e:
 			print(e)
 			return False
+	def get_lecture_url(self, classid, lectureid):
+		'''
+		gets url of lecture
+		'''
+		self.cur.execute("SELECT lectureurl FROM lecture WHERE classid = {} and lectureid = {}".format(classid, lectureid))
+		rows = self.cur.fetchall()
+		if len(rows) >= 1:
+			return rows[0][0]
+		return False
+
 	def reset_database(self):
 		'''
 		Empties all the tables in the database
@@ -155,6 +174,10 @@ class DatabaseManager():
 
 if __name__ == "__main__":
 	db = DatabaseManager()
+	print(db.get_all_classes(1))
+	print(db.get_lecture_url(1,2))
+	'''
+	OUTDATED TESTS TODO: update these
 	#add students as users
 	usid = db.generate_new_usid()
 	db.add_user(usid, 'SISMAN', 'SISMAN@rpi.edu', 'password', True)
@@ -246,3 +269,4 @@ if __name__ == "__main__":
 	#print(db.save_class(1, "Psoft", 3))
 	#print(db.add)
 	#db.add_user(3, 'Carson', 'bigboy@gmail.com', 'password', False)
+	'''
