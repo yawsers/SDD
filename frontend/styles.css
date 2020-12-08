@@ -248,5 +248,5 @@ button {
 }
 
 .form-page a {
-	text-align: center;
+	width: fit-content;
 }
