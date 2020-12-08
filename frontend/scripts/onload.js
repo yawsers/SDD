@@ -40,7 +40,6 @@ function loadClasses() {
 	// Fill page with classes
 	http.onload = function() {
         	const response = JSON.parse(http.responseText);
-		console.log(response);
 		const classdiv = document.getElementById("classes");
 		for (var i = 0; i < response.result.length; i++) {
 			classdiv.innerHTML += "<a href=class.html?id=" +
