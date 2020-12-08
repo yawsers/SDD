@@ -27,5 +27,5 @@ class Nav extends HTMLElement {
 customElements.define('secondary-nav', Nav);
 
 function redirectLecture() {
-	window.location.replace("localhost:8000");
+	window.open("localhost:8000/video_feed");
 }
