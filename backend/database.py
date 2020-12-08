@@ -60,12 +60,12 @@ class DatabaseManager():
 		'''
 		returns true if the user and passwordhash are in the database
 		'''
-		rows = self.cur.execute("SELECT userid FROM users WHERE email= '{}' and passwordhash = '{}'".format(email, passwordhash))
+		rows = self.cur.execute("SELECT userid, isstudent FROM users WHERE email= '{}' and passwordhash = '{}'".format(email, passwordhash))
 		rows = self.cur.fetchall()
 		if len(rows) == 0:
-			return False, None
+			return False, None, None
 		else:
-			return True, rows[0][0] 
+			return True, rows[0][0], rows[0][1] 
 		return len(self.cur.fetchall()) == 1
 	def isStudent(self,usid):
 		rows = self.cur.execute("SELECT 1 FROM users WHERE userid = {} and isstudent = {}".format(usid, True))
