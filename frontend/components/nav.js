@@ -9,7 +9,7 @@ class Nav extends HTMLElement {
 		if (loc == "classes") {
 			if (localStorage.getItem('isstudent') == "true")
 				nav += `<a href="#">Join a class</a>`;
-			else nav += `<a href="#">Create a class</a>`;
+			else nav += `<a href="createclass.html">Create a class</a>`;
 		} else if (loc == "class" || loc == "studentlist") {
 			const urlParams = new URLSearchParams(window.location.search);
 			const classid = urlParams.get('id');
