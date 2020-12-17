@@ -75,5 +75,22 @@ function loadClass() {
 		document.getElementById("lectures").innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/ynig2wrF_as" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
 
 	}
+}
 
+
+// onload for Student List page
+// If the user is logged in and in a valid class, load the respective list of students
+function loadStudentList() {
+	if (!isLoggedIn()) {
+		window.location.replace('login.html');
+	}
+
+	// Get query params to find class
+	const urlParams = new URLSearchParams(window.location.search);
+    
+        // TODO: Get and load student list
+        const http = new XMLHttpRequest();    
+        // http.open("POST", "https://professit-backend.herokuapp.com/get_all_students")    
+        // http.setRequestHeader("Content-Type", "application/json");    
+        // http.send(JSON.stringify({"classid": urlParams.get('id')}));    
 }

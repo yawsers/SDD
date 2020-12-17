@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Profess.it</title>
+		<link rel="stylesheet" href="../styles.css" />
+		<script src="../components/header.js"></script>
+		<script src="../components/footer.js"></script>
+		<script src="../components/nav.js"></script>
+		<script src="../scripts/createclass.js"></script>
+		<script src="../scripts/onload.js"></script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<header-component></header-component>
+			<main>
+				<form id="createclass-form">
+					<input type="text" name="Classname" placeholder="Class Name">
+					<button type="button" onmouseup="createClass()">Create class</button>
+				</form>
+			</main>
+			<footer-component></footer-component>
+		</div>
+	</body>
+</html>
