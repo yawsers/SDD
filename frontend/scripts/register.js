@@ -1,9 +1,9 @@
-const accountForm = document.getElementById("account-form")
-
-// Called when user clicks "Create Student Account" button on account creation
-// page.  If successful, adds new student to database and redirects to main
-// student page
-function registerStudent() {
+// Called when user clicks "Create ... Account" button on account creation
+// page. Argument "isStudent" is "true" if Student account, "false" if
+// instructor.
+// If successful, adds new user to database and redirects to classes page
+function register(isStudent) {
+	const accountForm = document.getElementById("account-form")
 	const name = accountForm.Fullname.value.toLowerCase();
 	const email = accountForm.Email.value.toLowerCase();
 	const password = accountForm.Password.value;
@@ -11,41 +11,19 @@ function registerStudent() {
 	const http = new XMLHttpRequest();
 	http.open("POST", "https://professit-backend.herokuapp.com/add_user")
 	http.setRequestHeader("Content-Type", "application/json");
-	http.send(JSON.stringify({"name": name, "email": email, "password": password, "isstudent": true}));
-
-	http.onload = function() {
-        	const response = JSON.parse(http.responseText);
-		// Account creation successful, continue
-		if (response.status) {
-                	localStorage.setItem('token', response.usid)
-                	localStorage.setItem('isstudent', true)
-			window.location.replace('classes.html');
-		}
-		else {
-                	alert("Invalid account / Email already used");
-		}
+	if (isStudent == 'true') {
+		http.send(JSON.stringify({"name": name, "email": email, "password": password, "isstudent": true}));
 	}
-}
-
-// Called when user clicks "Create Instructor Account" button on account
-// creation page.  If successful, adds new instructor to database and redirects to
-// main instructor page
-function registerInstructor() {
-	const name = accountForm.Fullname.value.toLowerCase();
-	const email = accountForm.Email.value.toLowerCase();
-	const password = accountForm.Password.value;
-
-	const http = new XMLHttpRequest();
-	http.open("POST", "https://professit-backend.herokuapp.com/add_user")
-	http.setRequestHeader("Content-Type", "application/json");
-	http.send(JSON.stringify({"name": name, "email": email, "password": password, "isstudent": false}));
+	else {
+		http.send(JSON.stringify({"name": name, "email": email, "password": password, "isstudent": false}));
+	}
 
 	http.onload = function() {
         	const response = JSON.parse(http.responseText);
 		// Account creation successful, continue
 		if (response.status) {
                 	localStorage.setItem('token', response.usid)
-                	localStorage.setItem('isstudent', false)
+                	localStorage.setItem('isstudent', isStudent)
 			window.location.replace('classes.html');
 		}
 		else {

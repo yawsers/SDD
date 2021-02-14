@@ -1,9 +1,8 @@
-const loginForm = document.getElementById("login-form")
-
-// Called when user clicks "Student Login" button on login page.
+// Called when user clicks "Login" button on login page.
 // If successful, stores form info into localStorage and
-// redirects to main student page
-function loginStudent() {
+// redirects to classes page
+function login() {
+	const loginForm = document.getElementById("login-form")
 	const email = loginForm.Email.value.toLowerCase();
 	const password = loginForm.Password.value;
 
@@ -23,21 +22,5 @@ function loginStudent() {
 		else {
                 	alert("Invalid login");
 		}
-	}
-	
-
-}
-
-// Called when user clicks "Instructor Login" button on login page.
-// If successful, stores form info into localStorage and
-// redirects to main instructor page
-function loginInstructor() {
-	const email = loginForm.Email.value;
-	const password = loginForm.Password.value;
-
-	console.log(email, password, "instructor");
-
-	if (email == "User@rpi.edu" && password == "Password") {
-        	console.log("Successfully logged in");
 	}
 }
